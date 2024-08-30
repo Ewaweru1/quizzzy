@@ -32,8 +32,8 @@ class _HomeState extends State<Home> {
     String? token = await fm.getToken();
     String? oldToken = localStorage.get('token');
     if (oldToken != token) {
-      localStorage.put('token', token!);
-      await FirestoreService().saveTokenToDatabase(token);
+      localStorage.put('token', token);
+      await FirestoreService().saveTokenToDatabase(token!);
     }
     fm.onTokenRefresh.listen(FirestoreService().saveTokenToDatabase);
   }
